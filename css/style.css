@@ -17,6 +17,7 @@ header{
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 main{
@@ -27,6 +28,16 @@ main{
 
 footer{
     padding: 1rem;
+}
+
+.logo-game{
+    display: flex;
+    align-items: center;
+}
+
+img{
+    width: 3rem;
+    margin-right: 1.25rem;
 }
 
 .board{
