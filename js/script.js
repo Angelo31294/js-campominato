@@ -1,15 +1,32 @@
 "use strict"
+// creazione bombe
 
+let score = 0;
+let bombs = [];
+
+for (let i = 0; i < 16; i++){
+    let bombIn = true;
+    while (bombIn){
+        let randomBombs = parseInt (Math.floor(Math.random() * 100));
+        if(bombs.includes(randomBombs)){
+            bombIn = true;
+        } else {
+            bombs.push(randomBombs);
+            bombIn = false;
+        }
+    }
+}
+console.log(bombs)
+
+// creo la mia board
 const boardContainer = document.querySelector(".board");
 const playGame = document.querySelector(`.btn-play`);
-    
+
 boardContainer.innerHTML = "";
 
 playGame.addEventListener("click", function () {
-    boardContainer.classList.add("show")
-})
-
-createGame (boardContainer, 100);
+    boardContainer.classList.add("show");
+});
 
 function createGame(boardElement, nCell){
     
@@ -19,13 +36,40 @@ function createGame(boardElement, nCell){
         boardCell.classList.add("board-number");
         // aggiungo l'evento click
         boardCell.addEventListener("click", function(){
-            boardCell.classList.add("select");
-            console.log(this);
+            let number = parseInt(boardCell.innerHTML);
+            if(bombs.includes(number)){
+                boardCell.classList.add("bomb");
+                document.getElementById("punteggio").innerHTML = (
+                    `
+                    ${"Defeat"} ${"Score"} ${(score)}
+                    `
+                );
+                alert("Hai perso! La pagina verrà ricaricta automaticamente");
+                window.location.reload();
+            } else {
+                score += 1;
+                boardCell.classList.add("select");
+            }  if (score === (100 - 16)) {
+                document.getElementById("punteggio").innerHTML = (
+                    `
+                    ${"Victory"} ${"Score"} ${(score)}
+                    `
+                );
+                alert("Bravo hai Vinto! La pagina verrà ricaricta automaticamente");
+                window.location.reload();
+            }
+            document.getElementById("punteggio").innerHTML = (
+                `
+                ${"Punteggio"} ${(score)}
+                `
+            );
         });
         boardElement.append(boardCell);
-    }
+    };
     
-}
+    
+};
+createGame (boardContainer, 100);
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
 

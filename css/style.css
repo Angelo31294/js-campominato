@@ -22,6 +22,8 @@ header{
 
 main{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: aquamarine;
     flex-grow: 1;
 }
@@ -65,5 +67,14 @@ button{
 }
 
 .select{
-    background-color: lightblue;
+    background-color: blue;
+}
+
+.bomb{
+    background-color: red;
+}
+
+#punteggio{
+    font-size: 3.125rem;
+    color: red;
 }
