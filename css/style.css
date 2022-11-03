@@ -1,0 +1,58 @@
+/* -------------
+    RESET
+-------------- */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+main{
+    display: flex;
+    background-color: aquamarine;
+    flex-grow: 1;
+}
+
+footer{
+    padding: 1rem;
+}
+
+.board{
+    display: none;
+}
+
+.show{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin: auto;
+    width: 31.25rem;
+    height: 31.25rem;
+}
+
+.board-number{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid black;
+}
+
+button{
+    cursor: pointer;
+    padding: 0 1.25rem;
+}
+
+.select{
+    background-color: lightblue;
+}
